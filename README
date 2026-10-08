@@ -1,0 +1,23 @@
+#GENERATE DIST FILE
+#GENERATE PACKEGE JSON AND PACKAGE - LOCK JSON
+npm init -y
+npm install --save-dev typescript ts-node @types/node
+npx tsc --init
+npx tsc --version
+
+#GENERATE NODE MODULES
+npx ts-node --version
+
+#generate src folder
+mkdir -p src/interfaces src/services
+
+#generate interface folder y service folder with de code
+#interface is a contract that defines the structure of an object, while a service is a class that contains business logic and interacts with other parts of the application
+#AXIOS make a hhtp get
+npm install axios
+
+#instalar el ejejecutos moderno
+npm install -D tsx
+npx tsx src/index.ts
+
+#crea archivo index dentro de src
