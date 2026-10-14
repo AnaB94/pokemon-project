@@ -1,5 +1,3 @@
-#this my favorite proyect because I use typescript and API connection and is very useful
-
 #GENERATE DIST FILE
 #GENERATE PACKEGE JSON AND PACKAGE - LOCK JSON
 npm init -y
@@ -22,4 +20,7 @@ npm install axios
 npm install -D tsx
 npx tsx src/index.ts
 
-#crea archivo index dentro de src
+#crea archivo index dentro de srcnpm run dev
+#para correr la api colocar
+npm install
+npm run dev

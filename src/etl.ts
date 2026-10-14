@@ -1,5 +1,5 @@
-import { writeFileSync } from 'fs';
 import { PokeApiService } from './services/pokeapi.service.js';
+import { loadOracle } from './oracle.js';
 import type { Pokemon } from './interfaces/pokemon.interface.js';
 
 const service = new PokeApiService();
@@ -26,16 +26,10 @@ function transform(data: Pokemon[]) {
   }));
 }
 
-// LOAD: guarda el CSV
-function load(rows: ReturnType<typeof transform>, file: string) {
-  const header = Object.keys(rows[0]!).join(',');
-  const lines = rows.map(r => Object.values(r).map(v => `"${v}"`).join(','));
-  writeFileSync(file, [header, ...lines].join('\n'), 'utf-8');
-}
-
+// LOAD: carga a Oracle
 export async function runEtl() {
   const raw = await extract();
   const rows = transform(raw);
-  load(rows, 'pokemon.csv');
-  console.log(`Listo: ${rows.length} filas en pokemon.csv`);
+  await loadOracle(rows);
+  console.log(`Listo: ${rows.length} filas cargadas en Oracle`);
 }
